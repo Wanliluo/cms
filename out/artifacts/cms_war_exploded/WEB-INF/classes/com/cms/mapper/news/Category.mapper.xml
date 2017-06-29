@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.mapper.news.CategoryMapper">
+    <insert id="add" parameterType="com.cms.common.entity.news.Category">
+        INSERT INTO
+        cms_category(id, parent_id, parent_ids, site_id, is_parent, name, description)
+        VALUES (#{id}, #{parentId}, #{parentIds}, #{siteId}, #{isParent}, #{name}, #{description});
+    </insert>
+
+    <delete id="delById">
+        DELETE FROM cms_category WHERE id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.cms.common.entity.news.Category">
+        UPDATE `cms_category`
+        SET category_id = #{categoryId},
+        title = #{title},
+        content = #{content},
+        author = #{author}
+        WHERE `id`=#{id}
+    </update>
+
+    <select id = "queryById" resultType="com.cms.common.entity.news.Category">
+        SELECT *
+        FROM cms_category
+        WHERE cms_category.id=#{id}
+    </select>
+
+    <select id = "queryByName" resultType="com.cms.common.entity.news.Category">
+        SELECT *
+        FROM cms_category
+        WHERE cms_category.name=#{name}
+    </select>
+
+    <select id = "queryByIsParent" resultType="Category">
+    SELECT
+    id AS id,
+    parent_id AS parentId,
+    parent_ids AS parentIds,
+    site_id AS siteId,
+    is_parent AS isParent,
+    name AS name,
+    description AS description
+    FROM cms_category cc
+    WHERE cc.is_parent = #{isParent}
+    </select>
+
+    <select id = "getListByCondition" resultType="Category">
+        SELECT
+        id AS id,
+        parent_id AS parentId,
+        parent_ids AS parentIds,
+        site_id AS siteId,
+        is_parent AS isParent,
+        name AS name,
+        description AS description
+        FROM cms_category cc
+        WHERE
+        1=1
+        <if test="id != null and id !=''">
+            and cc.id = #{id}
+        </if>
+        <if test="parentId!= null and parentId != ''">
+            and cc.parent_id = #{parentId}
+        </if>
+        <if test="parentIds!= null and parentIds != ''">
+            and cc.parent_ids = #{parentIds}
+        </if>
+        <if test="siteId!= null and siteId!= ''">
+            and cc.site_id = #{siteId}
+        </if>
+        <if test="isParent> -1">
+            and cc.is_parent = #{isParent}
+        </if>
+        <if test="name != null and name != ''">
+            and cc.name like concat('%', #{name}, '%')
+        </if>
+        <if test="description != null and description != ''">
+            and cc.description like concat('%', #{description}, '%')
+        </if>
+    </select>
+</mapper>

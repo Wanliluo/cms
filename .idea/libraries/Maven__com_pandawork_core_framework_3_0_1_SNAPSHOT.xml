@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.pandawork.core:framework:3.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/pandawork/core/framework/3.0.1-SNAPSHOT/framework-3.0.1-20151218.150347-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/pandawork/core/framework/3.0.1-SNAPSHOT/framework-3.0.1-20151218.150347-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/pandawork/core/framework/3.0.1-SNAPSHOT/framework-3.0.1-20151218.150347-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

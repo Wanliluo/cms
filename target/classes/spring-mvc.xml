@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean class="com.pandawork.core.framework.bean.StaticAutoWireBeanPostProcessor" />
+
+    <!--默认的welcome页面配置-->
+    <mvc:view-controller path="/" view-name="face/index" />
+    <!--<mvc:annotation-driven />-->
+    <!-- 隐式地向 Spring 容器注册AutowiredAnnotationBeanPostProcessor,CommonAnnotationBeanPostProcessor,PersistenceAnnotationBeanPostProcessor,RequiredAnnotationBeanPostProcessor -->
+    <context:annotation-config />
+    <!-- enable transaction demarcation with annotations 开启事务 -->
+    <tx:annotation-driven />
+    <!--启用注解-->
+    <mvc:annotation-driven />
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.pandawork.core.common.log" />
+    <context:component-scan base-package="com.pandawork.core.framework.dao"/>
+    <context:component-scan base-package="com.cms.common"/>
+    <context:component-scan base-package="com.cms.mapper"/>
+    <context:component-scan base-package="com.cms.service"/>
+    <context:component-scan base-package="com.cms.web"/>
+    <context:component-scan base-package="com.cms.web.controller"/>
+    <!-- 对静态资源文件的访问 -->
+    <mvc:default-servlet-handler />
+    <mvc:resources location="/resources/resources/js/" mapping="/js/**"/>
+    <mvc:resources location="/resources/resources/images/" mapping="/images/**"/>
+    <mvc:resources location="/resources/resources/css/" mapping="/css/**"/>
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <mvc:resources location="/WEB-INF/views/face" mapping="/face/**"/>
+
+
+    <!-- 自动扫描  @Controller-->
+    <context:component-scan base-package="com.cms.web.controller"/>
+
+    <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<ref bean="mappingJacksonHttpMessageConverter"/> &lt;!&ndash; JSON转换器 &ndash;&gt;-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/layouts/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    <!--</bean>-->
+
+    <!-- 文件上传配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 上传文件大小限制为31M，31*1024*1024 -->
+        <property name="maxUploadSize" value="32505856"/>
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+
+    <import resource="spring-mybatis.xml"/>
+    <import resource="web-config.xml"/>
+
+</beans>

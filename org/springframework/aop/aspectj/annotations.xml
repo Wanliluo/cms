@@ -1,0 +1,5 @@
+<root>
+    <item name='org.springframework.aop.aspectj.AspectJWeaverMessageHandler boolean handleMessage(IMessage) 0'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

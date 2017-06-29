@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cms.mapper.news.ArticleMapper">
+    <insert id="addArticle" parameterType="com.cms.common.entity.news.Article">
+        INSERT INTO
+        cms_article(id, category_id, title, content,author)
+        VALUES (#{id}, #{categoryId}, #{title}, #{content}, #{author});
+    </insert>
+
+    <delete id="delArticleById">
+        DELETE  FROM cms_article  WHERE id = #{id}
+    </delete>
+
+    <update id="updateArticleById" parameterType="com.cms.common.entity.news.Article">
+        UPDATE `cms_article`
+        SET category_id = #{categoryId},
+        title = #{title},
+        content = #{content},
+        author = #{author}
+        WHERE `id`=#{id}
+    </update>
+
+    <select id = "queryArticleById" resultType="com.cms.common.entity.news.Article">
+        SELECT
+        id AS id,
+        category_id AS categoryId,
+        title AS title,
+        content AS content,
+        weight AS weight,
+        clicks AS clicks,
+        author AS author,
+        last_modified_time AS lastModifiedTime
+        FROM cms_article
+        WHERE cms_article.id=#{id}
+    </select>
+
+    <select id="getArticleList" resultType="com.cms.common.entity.news.Article">
+        SELECT
+        id AS id,
+        category_id AS categoryId,
+        title AS title,
+        content AS content,
+        weight AS weight,
+        clicks AS clicks,
+        author AS author,
+        last_modified_time AS lastModifiedTime
+        FROM cms_article ca
+        <where>
+            1=1
+            <if test="categoryId != null and categoryId !=''">
+                and ca.category_id = #{categoryId}
+            </if>
+            <if test="title != null and title != ''">
+                and ca.title like concat('%', #{title}, '%')
+            </if>
+            <if test="content != null and content != ''">
+                and ca.content like concat('%', #{content}, '%')
+            </if>
+            <if test="author != null and author != ''">
+                and ca.author like concat('%', #{author}, '%')
+            </if>
+        </where>
+        ORDER BY ca.id DESC
+        limit #{pCurrent},#{pSize}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select
+        count(*)
+        from cms_article ca
+        <where>
+            1=1
+            <if test="categoryId != null and categoryId !=''">
+                and ca.category_id = #{categoryId}
+            </if>
+            <if test="title != null and title != ''">
+                and ca.title like concat('%', #{title}, '%')
+            </if>
+            <if test="content != null and content != ''">
+                and ca.content like concat('%', #{content}, '%')
+            </if>
+            <if test="author != null and author != ''">
+                and ca.author like concat('%', #{author}, '%')
+            </if>
+        </where>
+
+    </select>
+
+</mapper>

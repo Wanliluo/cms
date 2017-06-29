@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.pandawork.net/web/schema/mvc"
+       xsi:schemaLocation="http://www.pandawork.net/web/schema/mvc http://www.pandawork.net/web/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+       default-autowire="byName" default-lazy-init="false">
+    <!-- pandawork默认的标签 -->
+    <mvc:pandaworkDefault />
+    <!-- Forwards requests to the "/" resource to the "welcome" views 默认的/到welcome页面 -->
+    <mvc:view-controller path="/" view-name="face/index" />
+    <!--<mvc:view-controller path="/" view-name="login/login"/>-->
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving
+        up static resources in the ${webappRoot}/resources/ directory 配置静态资源到/resuorces下 -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+
+    <!-- 此路径值相对于当前系统上传目录的根目录  -->
+    <!--<bean id="globalConstantPool" class="com.pandawork.scheduler.web.util.GlobalConstantPool" scope="singleton">
+        <property name="avatarPath" value="/avatars/" />
+        <property name="excelPath" value="/excel/" />
+    </bean> -->
+
+    <bean id="handlerAdapter"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id = "viewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"></property>
+    </bean>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+    <bean id="handlerMapping"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- Resolves views names to protected .jsp resources within the /WEB-INF/views
+        directory 配置对应的jsp页面的目录 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="2"/>
+    </bean>
+
+</beans>

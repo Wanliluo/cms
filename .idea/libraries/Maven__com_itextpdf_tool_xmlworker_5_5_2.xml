@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.itextpdf.tool:xmlworker:5.5.2">
+    <CLASSES>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/itextpdf/tool/xmlworker/5.5.2/xmlworker-5.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/itextpdf/tool/xmlworker/5.5.2/xmlworker-5.5.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://H:/Maven/apache-maven-3.3.1/maven_repo/com/itextpdf/tool/xmlworker/5.5.2/xmlworker-5.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

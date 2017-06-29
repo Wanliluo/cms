@@ -1,0 +1,28 @@
+label{
+    width: 150px;
+    vertical-align: top;
+    text-align: center;
+}
+.info-right input[type="submit"] {
+  border: none;
+  outline: none;
+  color: #FFF;
+  padding: .5em 1.5em;
+  font-size: .9em;
+  font-weight: 600;
+  margin: 0.5em 0 0 0;
+  -webkit-appearance: none;
+  background: #71c6c1;
+}
+.info-right input[type="submit"]:hover {
+background: #18A990;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+textarea{
+    width: 535px;
+    height: 100px;
+}

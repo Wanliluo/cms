@@ -1,0 +1,38 @@
+.banner-forms {
+    margin-right: 300px;
+    margin-bottom: 70px;
+    width: 60%;
+}
+.banner-forms a {
+    display: inline-block;
+    width: 22%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 10px;
+    text-align: center;
+    background-color: #64AEB9;
+    border-radius: 7px;
+}
+.pitch {
+    width: 78% !important;
+    font-size: 20px !important;
+    background-color: #71C6C1 !important;
+    border: 2px solid #659FA8;
+}
+form{
+    float: none !important;
+}
+form label{
+    float: left !important;
+}
+#code_input{
+    margin-top: 10px;
+}
+.sex{
+    vertical-align: -1px;
+}
+.sexname{
+    /*float: left;*/
+    display: inline-block;
+    width: 40%;
+}

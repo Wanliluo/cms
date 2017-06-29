@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cms.mapper.face.RecommendMapper">
+    <select id="queryById" resultType="com.cms.common.entity.face.Recommend">
+        SELECT *
+        FROM t_recommend
+        WHERE id = #{id}
+    </select>
+    <select id="queryAll" resultType="com.cms.common.entity.face.Recommend">
+        SELECT *
+        FROM t_recommend
+    </select>
+    <select id="queryByCategory" resultType="com.cms.common.entity.face.Recommend">
+        SELECT *
+        FROM t_recommend
+        WHERE category = #{category}
+    </select>
+    <select id="queryByGrade" resultType="com.cms.common.entity.face.Recommend">
+        SELECT *
+        FROM t_recommend
+        WHERE grade = #{grade}
+    </select>
+    <select id="queryByGradeAndCategory" resultType="com.cms.common.entity.face.Recommend">
+        SELECT *
+        FROM t_recommend
+        WHERE category = #{category} AND
+              grade = #{grade}
+    </select>
+</mapper>
