@@ -41,7 +41,7 @@ public class Person  extends AbstractEntity {
 
     //性别
     @Column(name = "sex")
-    private Integer sex;
+    private String sex;
 
     //职业（区分医生和患者）
     @Column(name = "job")
@@ -136,11 +136,11 @@ public class Person  extends AbstractEntity {
         this.birthday = birthday;
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

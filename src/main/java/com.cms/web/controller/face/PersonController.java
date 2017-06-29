@@ -77,16 +77,16 @@ public class PersonController extends AbstractController {
     }
 
     //注册
-    @RequestMapping(value="/register", method =RequestMethod.POST)
-    public String register(@RequestParam("person") Person person, RedirectAttributes redirectAttributes) {
+    @RequestMapping(value="/register", method =RequestMethod.GET)
+    public String register(@RequestParam(value = "person", required = false)Person person) {
         try {
-            int  a= personService.isExistUserName(person.getUserName());
-            if(a==0) {
-                personService.addPerson(person);}
-            else{
-                redirectAttributes.addFlashAttribute("msg", "用户已存在！");
-                return "redirect:/";
-            }
+//            int  a= personService.isExistUserName(person.getUserName());
+//            if(a==0) {
+                personService.addPerson(person);
+//            else{
+//                redirectAttributes.addFlashAttribute("msg", "用户已存在！");
+//                return "redirect:/";
+
         } catch (Exception e) {
             e.printStackTrace();
         }

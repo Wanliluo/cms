@@ -164,5 +164,7 @@
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.2.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.poi:poi-scratchpad:3.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.poi:poi:3.11" level="project" />
+    <orderEntry type="library" name="javacpp" level="project" />
+    <orderEntry type="library" name="javacv" level="project" />
   </component>
 </module>

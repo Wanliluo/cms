@@ -7,6 +7,7 @@
 --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>注册</title>
@@ -30,7 +31,7 @@
             <div class="container">
                 <div class="banner-forms" id="banner-forms">
 
-                    <form action="http://localhost:8080/person/register" method="POST">
+                    <form action="http://localhost:8080/person/register" id="form" class="block" method="GET">
                         <h3>注册信息</h3>
                         <div>
                             <label>注册账号：</label>
@@ -96,7 +97,7 @@
                         <div id="v_container" style="width: 200px;height: 50px;"></div>
                         <input type="text" id="code_input" class="name" value="" placeholder="请输入验证码"/>
 
-                        <button type="submit" id="my_button" class="btn btn-info mrgn-can">登录</button>
+                        <button type="submit" id="my_button" class="btn btn-info mrgn-can">注册</button>
 
                     </form>
                 </div>

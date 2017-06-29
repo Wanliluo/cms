@@ -69,15 +69,15 @@
 }
 
 .ch-img-1 {
-	background-image: url(../../img/team-1.jpg);
+	background-image: url(http://localhost:8080/images/team-3.jpg);
 }
 
 .ch-img-2 {
-	background-image: url(../../img/team-3.jpg);
+	background-image: url(http://localhost:8080/images/team-2.jpg);
 }
 
 .ch-img-3 {
-	background-image: url(../../img/team-2.jpg);
+	background-image: url(http://localhost:8080/images/team-1.jpg);
 }
 
 .ch-info h3 {

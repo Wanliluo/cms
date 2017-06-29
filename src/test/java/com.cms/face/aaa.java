@@ -1,62 +1,122 @@
 package com.cms.face;
 
-import org.apache.poi.hslf.blip.Bitmap;
-import org.junit.Test;
-import sun.misc.BASE64Decoder;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-import javax.persistence.Convert;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import javax.imageio.ImageIO;
+import javax.swing.Timer;
 
+import com.googlecode.javacv.CanvasFrame;
+import com.googlecode.javacv.OpenCVFrameGrabber;
+import com.googlecode.javacv.cpp.opencv_core.IplImage;
+
+import static com.googlecode.javacv.cpp.opencv_core.cvReleaseImage;
 
 /**
- * Created by 1 on 2017/4/7.
+ *
+ * Use JavaCV/OpenCV to capture camera images
+ *
+ * There are two functions in this demo:
+ * 1) show real-time camera images
+ * 2) capture camera images by mouse-clicking anywhere in the JFrame,
+ * the jpg file is saved in a hard-coded path.
+ *
+ * @author ljs
+ * 2011-08-19
+ *
  */
 public class aaa {
 
-    @Test
-    public void GenerateImage(){
+        public static String savedImageFile = "c:\\tmp\\my.jpg";
 
-    String imgStr="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAGQCAYAAABYs5LGAAADHklEQVR4nO3BMQEAAADCoPVPbQlPoA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgbzdEAAEmTlRnAAAAAElFTkSuQmCC";
-      //对字节数组字符串进行Base64解码并生成图片
-//        if (imgStr == null) //图像数据为空
-//            return false;
-        BASE64Decoder decoder = new BASE64Decoder();
-        try
-        {
-            //Base64解码
-            byte[] b = decoder.decodeBuffer(imgStr);
-            for(int i=0;i<b.length;++i)
-            {
-                if(b[i]<0)
-                {//调整异常数据
-                    b[i]+=256;
+        //timer for image capture animation
+        static class TimerAction implements ActionListener {
+            private Graphics2D g;
+            private CanvasFrame canvasFrame;
+            private int width,height;
+
+            private int delta=10;
+            private int count = 0;
+
+            private Timer timer;
+            public void setTimer(Timer timer){
+                this.timer = timer;
+            }
+
+            public TimerAction(CanvasFrame canvasFrame){
+                this.g = (Graphics2D)canvasFrame.getCanvas().getGraphics();
+                this.canvasFrame = canvasFrame;
+                this.width = canvasFrame.getCanvas().getWidth();
+                this.height = canvasFrame.getCanvas().getHeight();
+            }
+            public void actionPerformed(ActionEvent e) {
+                int offset = delta*count;
+                if(width-offset>=offset && height-offset >= offset) {
+                    g.drawRect(offset, offset, width-2*offset, height-2*offset);
+                    canvasFrame.repaint();
+                    count++;
+                }else{
+                    //when animation is done, reset count and stop timer.
+                    timer.stop();
+                    count = 0;
                 }
             }
-            //生成jpeg图片
-            String imgFilePath = "G://222.jpg";//新生成的图片
-            OutputStream out = new FileOutputStream(imgFilePath);
-            out.write(b);
-            out.flush();
-            out.close();
-
         }
-        catch (Exception e)
-        {
 
+        public static void main(String[] args) throws Exception {
+            //open camera source
+            OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
+            grabber.start();
+
+            //create a frame for real-time image display
+            CanvasFrame canvasFrame = new CanvasFrame("Camera");
+            IplImage image = grabber.grab();
+            int width = image.width();
+            int height = image.height();
+            canvasFrame.setCanvasSize(width, height);
+
+            //onscreen buffer for image capture
+            final BufferedImage bImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics2D bGraphics = bImage.createGraphics();
+
+            //animation timer
+            TimerAction timerAction = new TimerAction(canvasFrame);
+            final Timer timer=new Timer(10, timerAction);
+            timerAction.setTimer(timer);
+
+            //click the frame to capture an image
+            canvasFrame.getCanvas().addMouseListener(new MouseAdapter(){
+                public void mouseClicked(MouseEvent e){
+                    timer.start(); //start animation
+                    try {
+                        ImageIO.write(bImage, "jpg", new File(savedImageFile));
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+
+            //real-time image display
+            while(canvasFrame.isVisible() && (image=grabber.grab()) != null){
+                if(!timer.isRunning()) { //when animation is on, pause real-time display
+                    canvasFrame.showImage(image);
+                    //draw the onscreen image simutaneously
+                    bGraphics.drawImage(image.getBufferedImage(),null,0,0);
+                }
+            }
+
+            //release resources
+            cvReleaseImage(image);
+            grabber.stop();
+            canvasFrame.dispose();
         }
+
     }
 
-}
 

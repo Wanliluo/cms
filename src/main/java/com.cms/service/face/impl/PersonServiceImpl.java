@@ -66,15 +66,15 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { SSException.class, Exception.class, RuntimeException.class })
     public void addPerson(Person person) throws SSException {
-        if(person!=null){
+//        if(person!=null){
             try {
                 commonDao.insert(person);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else {
-            System.out.println("person不能为空！！！");
-        }
+//        }else {
+//            System.out.println("person不能为空！！！");
+//        }
     }
 
     @Override

@@ -27,7 +27,7 @@ div .photo{
 }
 div .updata{
     position: absolute;
-    right: 20px;
+    /*right: 20px;*/
     bottom: 10px;
 }
 .info-right div{

@@ -29,9 +29,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-                    <li><a href="index.html"><span data-hover="Home">首页</span></a></li>
-                    <li><a href="http://localhost:8080/person/toface"><span data-hover="Test">测评</span></a></li>
-                    <li><a href="contact.html"><span data-hover="Personal ">个人中心</span></a></li>
+                    <li><a href="http://localhost:8080/person/toindex"><span data-hover="Home">首页</span></a></li>
+                    <li><a href="http://localhost:8080/person/toface/1"><span data-hover="Test">测评</span></a></li>
+                    <li><a href="http://localhost:8080/person/topersonal/1"><span data-hover="Personal ">个人中心</span></a></li>
                 </ul>
                 <div class="clearfix"></div>
             </div><!-- /.navbar-collapse -->
