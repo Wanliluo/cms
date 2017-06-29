@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6489e194-ed5e-4822-8c4f-77b0b640dca3" name="Default" comment="部分套页信息修改">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javacpp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javacv.xml" />
+    <list default="true" id="6489e194-ed5e-4822-8c4f-77b0b640dca3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cms/web/controller/face/PersonController.class" afterPath="$PROJECT_DIR$/target/classes/com/cms/web/controller/face/PersonController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/cms/face/aaa.class" afterPath="$PROJECT_DIR$/target/test-classes/com/cms/face/aaa.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/web-cms/WEB-INF/classes/com/cms/web/controller/face/PersonController.class" afterPath="$PROJECT_DIR$/target/web-cms/WEB-INF/classes/com/cms/web/controller/face/PersonController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/web-cms/WEB-INF/lib/web-cms-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/web-cms/WEB-INF/lib/web-cms-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.iml" afterPath="$PROJECT_DIR$/cms.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jxl.log" afterPath="$PROJECT_DIR$/jxl.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.cms/common/entity/face/Person.java" afterPath="$PROJECT_DIR$/src/main/java/com.cms/common/entity/face/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.cms/service/face/impl/PersonServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com.cms/service/face/impl/PersonServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.cms/web/controller/face/PersonController.java" afterPath="$PROJECT_DIR$/src/main/java/com.cms/web/controller/face/PersonController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/header.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/detail.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/detail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/face.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/face.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/personal.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/register.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/result.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/result.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/update.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/face/update.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/common/bootstrap.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/common/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/common/style4.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/common/style4.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/pages/personal.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/resources/css/pages/personal.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com.cms/face/aaa.java" afterPath="$PROJECT_DIR$/src/test/java/com.cms/face/aaa.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/web-cms/WEB-INF/layouts/header.jsp" afterPath="$PROJECT_DIR$/target/web-cms/WEB-INF/layouts/header.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/web-cms/WEB-INF/views/face/detail.jsp" afterPath="$PROJECT_DIR$/target/web-cms/WEB-INF/views/face/detail.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/web-cms/WEB-INF/views/face/face.jsp" afterPath="$PROJECT_DIR$/target/web-cms/WEB-INF/views/face/face.jsp" />
@@ -2907,7 +2887,7 @@
       <workItem from="1491391213922" duration="11576000" />
       <workItem from="1491438247943" duration="18835000" />
       <workItem from="1491465823603" duration="70668000" />
-      <workItem from="1498704023576" duration="24420000" />
+      <workItem from="1498704023576" duration="24441000" />
     </task>
     <task id="LOCAL-00001" summary="第一次修改">
       <created>1498710013419</created>
@@ -2916,7 +2896,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498710013419</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="部分套页信息修改">
+      <created>1498736386643</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1498736386643</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2952,7 +2939,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393916000" />
+    <option name="totallyTimeSpent" value="393937000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
